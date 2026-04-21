@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import streamlit as st
 
+from core import samples
 from core.anonymizer import anonymize
 from core.file_loader import load_text
 from core.llm_client import generate
@@ -29,12 +30,46 @@ Rules:
 """
 
 
+def _load_samples() -> None:
+    st.session_state["chrono_sample_chunks"] = samples.chronology_files()
+
+
+def _clear_samples() -> None:
+    st.session_state.pop("chrono_sample_chunks", None)
+
+
+def _sample_section() -> None:
+    with st.expander("Load sample documents (fictional custody matter)", expanded=False):
+        files = samples.chronology_files()
+        st.caption(
+            "Three fabricated source docs from *Parker v. Doe*. "
+            "All names, dates, phones, and addresses are fake."
+        )
+        for name, text in files:
+            st.markdown(f"**{name}**  ·  {len(text.split())} words")
+            preview = text[:400] + ("…" if len(text) > 400 else "")
+            st.code(preview, language="text")
+        st.button(
+            f"Import all {len(files)} sample files",
+            on_click=_load_samples,
+            key="chrono_sample_btn",
+        )
+
+    loaded = st.session_state.get("chrono_sample_chunks")
+    if loaded:
+        c1, c2 = st.columns([5, 1])
+        c1.success(f"{len(loaded)} sample file(s) loaded and ready to process.")
+        c2.button("Clear", on_click=_clear_samples, key="chrono_sample_clear")
+
+
 def render() -> None:
     st.header("Chronology Builder")
     st.caption(
         "Upload mixed discovery files or paste in notes. The model returns a date-sorted timeline "
         "with a source snippet for every row."
     )
+
+    _sample_section()
 
     uploads = st.file_uploader(
         "Upload source documents (.txt, .md, .pdf, .docx)",
@@ -68,9 +103,11 @@ def render() -> None:
                     return
         if pasted.strip():
             chunks.append(f"=== pasted notes ===\n{pasted.strip()}")
+        for name, text in st.session_state.get("chrono_sample_chunks", []):
+            chunks.append(f"=== {name} (sample) ===\n{text}")
 
         if not chunks:
-            st.warning("Upload at least one file or paste some text.")
+            st.warning("Upload a file, paste text, or load the sample documents.")
             return
 
         raw_text = "\n\n".join(chunks)

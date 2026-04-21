@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import streamlit as st
 
+from core import samples
 from core.anonymizer import anonymize
 from core.file_loader import docx_bytes_from_text, load_text
 from core.llm_client import generate
@@ -25,6 +26,47 @@ Rules:
 """
 
 
+def _load_sample_template() -> None:
+    st.session_state["tmpl_sample_text"] = samples.template_text()
+
+
+def _clear_sample_template() -> None:
+    st.session_state.pop("tmpl_sample_text", None)
+
+
+def _load_sample_facts() -> None:
+    st.session_state["tmpl_fields"] = samples.template_facts()
+
+
+def _sample_section() -> None:
+    with st.expander("Load sample template + facts (fictional Texas will)", expanded=False):
+        st.caption(
+            "A Texas-style Last Will and Testament boilerplate paired with facts "
+            "for a widowed testator (Eleanor Hayes) with three adult children. "
+            "All data is fabricated."
+        )
+        tpl_preview = samples.template_text()
+        st.markdown("**Template preview**")
+        st.code(tpl_preview[:500] + ("…" if len(tpl_preview) > 500 else ""), language="text")
+        st.button(
+            "Import sample template",
+            on_click=_load_sample_template,
+            key="tmpl_sample_tpl_btn",
+        )
+        st.markdown("**Client facts preview**")
+        st.code(samples.template_facts(), language="text")
+        st.button(
+            "Import sample facts",
+            on_click=_load_sample_facts,
+            key="tmpl_sample_facts_btn",
+        )
+
+    if "tmpl_sample_text" in st.session_state:
+        c1, c2 = st.columns([5, 1])
+        c1.success("Sample template loaded — it will be used unless you upload a different file.")
+        c2.button("Clear", on_click=_clear_sample_template, key="tmpl_sample_clear")
+
+
 def render() -> None:
     st.header("Template Generator")
     st.caption(
@@ -32,6 +74,8 @@ def render() -> None:
         "The model returns a customized first draft with `[[ATTORNEY REVIEW]]` markers "
         "wherever it needs your judgment."
     )
+
+    _sample_section()
 
     template_file = st.file_uploader(
         "Upload boilerplate (.txt, .md, .pdf, .docx)",
@@ -60,21 +104,23 @@ def render() -> None:
         )
 
     if st.button("Generate draft", type="primary", key="tmpl_run"):
-        if not template_file:
-            st.warning("Upload a boilerplate document first.")
+        if template_file:
+            try:
+                tpl_body = load_text(template_file.name, template_file.read())
+            except Exception as exc:
+                st.error(f"Could not read {template_file.name}: {exc}")
+                return
+        elif "tmpl_sample_text" in st.session_state:
+            tpl_body = st.session_state["tmpl_sample_text"]
+        else:
+            st.warning("Upload a boilerplate document or load the sample template.")
             return
         if not fields.strip():
             st.warning("Add the client-specific facts.")
             return
 
-        try:
-            template_text = load_text(template_file.name, template_file.read())
-        except Exception as exc:
-            st.error(f"Could not read {template_file.name}: {exc}")
-            return
-
         raw = (
-            f"=== TEMPLATE ===\n{template_text}\n\n"
+            f"=== TEMPLATE ===\n{tpl_body}\n\n"
             f"=== CLIENT-SPECIFIC FACTS ===\n{fields.strip()}"
         )
         names = [n.strip() for n in names_raw.split(",")] if names_raw else []

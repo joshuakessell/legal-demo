@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import streamlit as st
 
+from core import samples
 from core.anonymizer import anonymize
 from core.llm_client import generate
 
@@ -62,8 +63,28 @@ def _restore(output: str, mapping: dict[str, str]) -> str:
     return restored
 
 
+def _load_email_sample() -> None:
+    s = samples.email_sample()
+    st.session_state["email_recipient"] = s["recipient"]
+    st.session_state["email_tone"] = s["tone"]
+    st.session_state["email_bullets"] = s["bullets"]
+
+
 def _render_email() -> None:
     st.subheader("Draft an email")
+
+    with st.expander("Load sample inputs", expanded=False):
+        s = samples.email_sample()
+        st.markdown(f"**Recipient context:**  {s['recipient']}")
+        st.markdown(f"**Tone:**  {s['tone']}")
+        st.markdown("**Key points:**")
+        st.code(s["bullets"], language="text")
+        st.button(
+            "Fill fields with sample",
+            on_click=_load_email_sample,
+            key="email_sample_btn",
+        )
+
     recipient = st.text_input(
         "Recipient context",
         key="email_recipient",
@@ -97,8 +118,23 @@ def _render_email() -> None:
         st.markdown(_restore(reply, mapping))
 
 
+def _load_plain_sample() -> None:
+    st.session_state["plain_source"] = samples.plain_legalese()
+
+
 def _render_plain() -> None:
     st.subheader("Translate legalese to plain English")
+
+    with st.expander("Load sample legalese", expanded=False):
+        st.caption("A dense indemnification clause from a fictional commercial lease.")
+        preview = samples.plain_legalese()
+        st.code(preview[:600] + ("…" if len(preview) > 600 else ""), language="text")
+        st.button(
+            "Fill field with sample",
+            on_click=_load_plain_sample,
+            key="plain_sample_btn",
+        )
+
     source = st.text_area(
         "Legal text",
         height=260,
