@@ -1,0 +1,53 @@
+=== TEXT MESSAGE EXPORT ===
+Participants: Jane Doe (214-555-0143), John Parker (214-555-0178)
+Exported: 10/02/2024
+
+(Messages appear newest-first per the export tool — do not re-sort.)
+
+[9/27/2024 9:41 PM] John: not taking the kids this weekend. figure it
+out.
+
+[9/27/2024 9:43 PM] Jane: This is the fourth weekend in a row. What
+reason this time?
+
+[9/27/2024 10:02 PM] John: not your business.
+
+[9/20/2024 7:15 PM] John: running late. dropping them off at 8:30
+
+[9/20/2024 7:16 PM] Jane: the order says 6:00. We have plans at 8.
+
+[9/20/2024 7:18 PM] John: cant do anything about it
+
+[9/6/2024 6:02 PM] John: kids are sick. you take them.
+
+[9/6/2024 6:03 PM] Jane: They were fine when you picked them up 3 hours
+ago.
+
+[7/4/2024 2:30 PM] Jane: You smell like alcohol. Please don't drive
+them.
+
+[7/4/2024 2:31 PM] John: youre being dramatic
+
+[7/4/2024 2:35 PM] Jane: I am taking the kids home. We can talk about
+this later.
+
+[5/12/2024 10:11 AM] John: happy mothers day
+
+[5/12/2024 11:40 AM] Jane: Thank you. The kids wanted to call — can we
+set up a time?
+
+[3/15/2024 4:02 PM] John: I'll get them from school Friday.
+
+[2/22/2024 8:00 AM] Jane: Morgan has a dentist appointment at 3:30 today.
+Your week. Please don't forget.
+
+[2/22/2024 3:47 PM] Dr. Nguyen's office: Confirming Morgan Parker missed
+her 3:30 appointment today. Please call to reschedule.
+
+[1/5/2024 3:58 PM] Jane: Where are you. School called.
+
+[1/5/2024 4:10 PM] John: car trouble. on my way
+
+[8/14/2024 5:20 PM] Jane: What's on Alex's arm?
+
+[8/14/2024 5:22 PM] John: wrestling with morgan

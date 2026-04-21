@@ -37,6 +37,15 @@ Opens at http://localhost:8501.
 
 Edit `.env`, change `PROVIDER`, restart Streamlit. No code changes.
 
+## Try it with sample data
+
+Fake but realistic documents live in `samples/`:
+
+- `samples/chronology/` — three disorganized source docs from a fictional Texas custody matter. Upload all three into the **Chronology** tab.
+- `samples/correspondence/legalese_clause.txt` — a dense indemnification clause for the **Translate legalese** mode.
+- `samples/correspondence/email_bullets.txt` — sample bullets for the **Draft an email** mode.
+- `samples/templates/will_template.txt` + `client_facts.txt` — upload the template and paste the facts into the **Templates** tab.
+
 ## Privacy note
 
 These demos call a third-party API. Even with anonymization enabled, review everything before sending. See the **Privacy** tab inside the app for specifics on data retention and enterprise-tier options.

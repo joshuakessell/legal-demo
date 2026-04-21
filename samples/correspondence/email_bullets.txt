@@ -1,0 +1,17 @@
+Suggested inputs for the "Draft an email" sub-tab.
+
+Recipient context:
+    Client in a pending divorce matter (first follow-up after intake)
+
+Tone:
+    Warm
+
+Key points (one per line — paste everything below the line into the Key Points field):
+--------------------------------------------------------------------------------
+- Thank Jane for coming in Thursday and for the documents she already forwarded.
+- Confirm we will file the petition for SAPCR modification within the next two weeks.
+- Ask her to send the screenshots of the 8/14 and 9/27 text messages if she hasn't already.
+- Remind her to keep a running log of missed or shortened possession periods.
+- Mention that our paralegal, Katie, will reach out separately about the filing fee.
+- Note that nothing in this email should be forwarded to John Parker.
+- Invite her to call with any questions; our number is 972-555-0132.

@@ -1,0 +1,74 @@
+=== FORWARDED EMAIL THREAD ===
+
+---------- Forwarded message ---------
+From: Jane Doe <jane.doe@example.com>
+To: John Parker <john.parker@example.net>
+Date: Tue, Sep 10, 2024, 8:14 PM
+Subject: This weekend
+
+John — are you picking up the kids Friday or not? You didn't answer my
+last two texts. Alex's soccer game is Saturday at 10.
+
+— J.
+
+
+---------- Forwarded message ---------
+From: John Parker <john.parker@example.net>
+To: Jane Doe <jane.doe@example.com>
+Date: Wed, Sep 11, 2024, 6:02 AM
+Subject: Re: This weekend
+
+I'll be there by 6. I already told you this twice. Stop emailing me at
+work.
+
+J.
+
+
+---------- Forwarded message ---------
+From: Jane Doe <jane.doe@example.com>
+To: John Parker <john.parker@example.net>
+Date: Sun, Aug 18, 2024, 9:02 PM
+Subject: Alex's arm
+
+John — what happened to Alex's arm? The bruise is bigger today than it
+was Friday when I picked him up. He told me it was from wrestling but
+he's been quiet about it all weekend. Please call me tonight.
+
+Jane
+214-555-0143
+
+
+---------- Forwarded message ---------
+From: John Parker <john.parker@example.net>
+To: Jane Doe <jane.doe@example.com>
+Date: Mon, Aug 19, 2024, 11:47 AM
+Subject: Re: Alex's arm
+
+Kids horse around. He's fine. Don't make this a thing.
+
+
+---------- Forwarded message ---------
+From: Jane Doe <jane.doe@example.com>
+To: School Nurse — Rockwall ISD <nurse.rhes@example.org>
+Date: Thu, Jan 4, 2024, 4:12 PM
+Subject: Pickup today
+
+Hi Nancy — I'm so sorry, I just got the call. John was supposed to pick
+up Alex and Morgan at 3:00. He is not answering. I'm leaving Dallas now
+and should be there around 5:15. Please let me know if there's anything
+I need to do.
+
+Jane Doe
+(Mother — Alex Parker, 5th grade; Morgan Parker, 1st grade)
+
+
+---------- Forwarded message ---------
+From: School Nurse — Rockwall ISD <nurse.rhes@example.org>
+To: Jane Doe <jane.doe@example.com>
+Date: Thu, Jan 4, 2024, 4:20 PM
+Subject: Re: Pickup today
+
+No problem, Jane. The kids are with me in the front office. We'll be
+here until 5:30. This is the second time this month — just a heads up.
+
+— Nancy

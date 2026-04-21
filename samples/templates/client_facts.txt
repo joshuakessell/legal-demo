@@ -1,0 +1,21 @@
+Paste the block below into the "Client-specific facts" field.
+--------------------------------------------------------------------------------
+- Testator: Eleanor Whitfield Hayes
+- Address: 1807 Live Oak Way, Heath, TX 75126
+- Date of birth: April 3, 1956
+- Marital status: Widowed (spouse Thomas Raymond Hayes, d. 2019)
+- Children:
+    - Caroline Hayes-Bennett (DOB 6/14/1982) — married, two children of her own
+    - Daniel Thomas Hayes (DOB 11/2/1985) — single
+    - Nora Hayes (DOB 3/21/1994) — currently a full-time graduate student
+- Specific bequests:
+    - Grandmother's pearl necklace to Caroline Hayes-Bennett
+    - Library of first-edition mystery novels to Daniel Thomas Hayes
+    - 1967 Ford Mustang to Nora Hayes
+- Residuary estate: equal shares among the three children, per stirpes
+- Independent Executor: Caroline Hayes-Bennett
+- Alternate Independent Executor: Daniel Thomas Hayes
+- Guardian for minor children: N/A (no minor children)
+- County of residence at signing: Rockwall County, Texas
+- Phone: 469-555-0112
+- Email: ewhayes@example.com
