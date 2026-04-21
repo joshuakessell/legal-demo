@@ -31,9 +31,9 @@ def current_model() -> str:
     return os.getenv("GEMINI_MODEL", DEFAULT_GEMINI_MODEL)
 
 
-@lru_cache(maxsize=2)
-def _gemini_model(model_name: str):
-    import google.generativeai as genai
+@lru_cache(maxsize=1)
+def _gemini_client():
+    from google import genai
 
     key = os.getenv("GEMINI_API_KEY")
     if not key:
@@ -41,8 +41,7 @@ def _gemini_model(model_name: str):
             "GEMINI_API_KEY is not set. Add it to your .env file "
             "(get one at https://aistudio.google.com/app/apikey), then restart."
         )
-    genai.configure(api_key=key)
-    return genai.GenerativeModel(model_name)
+    return genai.Client(api_key=key)
 
 
 @lru_cache(maxsize=1)
@@ -69,12 +68,16 @@ def generate(system: str, user: str, temperature: float = 0.3) -> str:
     provider = current_provider()
 
     if provider == "gemini":
-        model = _gemini_model(current_model())
-        # Gemini doesn't have a separate "system" role in the simple SDK; prepend it.
-        prompt = f"{system}\n\n---\n\n{user}"
-        resp = model.generate_content(
-            prompt,
-            generation_config={"temperature": temperature},
+        from google.genai import types
+
+        client = _gemini_client()
+        resp = client.models.generate_content(
+            model=current_model(),
+            contents=user,
+            config=types.GenerateContentConfig(
+                system_instruction=system,
+                temperature=temperature,
+            ),
         )
         return (resp.text or "").strip()
 
