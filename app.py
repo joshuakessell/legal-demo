@@ -18,6 +18,30 @@ from demos import chronology, correspondence, templates
 st.set_page_config(page_title="Legal AI Demos", layout="wide")
 
 
+_LARGE_FONT_CSS = """
+<style>
+  html, body, [class*="css"] { font-size: 20px; }
+  .block-container { max-width: 1200px; }
+  h1 { font-size: 2.6rem !important; }
+  h2 { font-size: 2.1rem !important; }
+  h3 { font-size: 1.7rem !important; }
+  .stMarkdown p, .stMarkdown li { font-size: 1.15rem; line-height: 1.55; }
+  .stTabs [data-baseweb="tab"] { font-size: 1.15rem; }
+  label, .stRadio label, .stCheckbox label { font-size: 1.1rem !important; }
+  .stTextInput input, .stTextArea textarea,
+  .stSelectbox div[data-baseweb="select"] { font-size: 1.1rem !important; }
+  .stButton button { font-size: 1.15rem; padding: 0.5rem 1.1rem; }
+  [data-testid="stCaptionContainer"], .stCaption { font-size: 1rem !important; }
+  code, pre { font-size: 1rem !important; }
+  section[data-testid="stSidebar"] * { font-size: 1.05rem; }
+</style>
+"""
+
+
+def _inject_css() -> None:
+    st.markdown(_LARGE_FONT_CSS, unsafe_allow_html=True)
+
+
 def _sidebar() -> None:
     st.sidebar.title("Legal AI Demos")
     st.sidebar.markdown(
@@ -76,6 +100,7 @@ before filing or sending, and document your AI use where required by local rule.
 
 
 def main() -> None:
+    _inject_css()
     _sidebar()
     tab_chrono, tab_corr, tab_tmpl, tab_priv = st.tabs(
         ["Chronology", "Correspondence", "Templates", "Privacy"]
